@@ -18,3 +18,24 @@ ASCII(например, €);
 Реализовать считывание данных из созданного файла и проверить,
 совпадают ли они с исходными.
 """
+
+import yaml
+
+data = {
+    'items': ['computer', 'printer', 'keyboard', 'mouse'],
+    'items_price': {
+        'computer': '200€-1000€',
+        'keyboard': '5€-50€',
+        'mouse': '4€-7€',
+        'printer': '100€-300€',
+    },
+    'items_quantity': 4,
+}
+
+with open('file.yaml', 'w') as f:
+    yaml.dump(data, f, allow_unicode=True, default_flow_style=False)
+
+with open('file.yaml', 'r') as f:
+    loaded_data = yaml.safe_load(f)
+
+print(loaded_data == data)
