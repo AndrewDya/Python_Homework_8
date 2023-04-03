@@ -38,5 +38,41 @@ os_code_list, os_type_list. В этой же функции создать гл�
 """
 
 
-os_prod_reg = re.compile(r'Изготовитель системы:\s*\S*')
-os_prod_list.append(os_prod_reg.findall(data)[0].split()[2])
+# os_prod_reg = re.compile(r'Изготовитель системы:\s*\S*')
+# os_prod_list.append(os_prod_reg.findall(data)[0].split()[2])
+
+import csv
+import re
+
+
+def get_data():
+    os_prod_list, os_name_list, os_code_list, os_type_list = [], [], [], []
+    main_data = [['Изготовитель системы',
+                  'Название ОС', 'Код продукта', 'Тип системы']]
+    files = ['info_1.txt', 'info_2.txt', 'info_3.txt']
+    for file in files:
+        with open(file, 'r') as f:
+            data = f.read()
+            os_prod_reg = re.compile(r'Изготовитель системы:\s*(\S+)')
+            os_name_reg = re.compile(r'Название ОС:\s*(.+)')
+            os_code_reg = re.compile(r'Код продукта:\s*(\S+)')
+            os_type_reg = re.compile(r'Тип системы:\s*(\S+)')
+            os_prod_list.append(os_prod_reg.findall(data)[0])
+            os_name_list.append(os_name_reg.findall(data)[0])
+            os_code_list.append(os_code_reg.findall(data)[0])
+            os_type_list.append(os_type_reg.findall(data)[0])
+    for i in range(len(os_prod_list)):
+        main_data.append([os_prod_list[i], os_name_list[i],
+                         os_code_list[i], os_type_list[i]])
+    return main_data
+
+
+def write_to_csv(file_path):
+    with open(file_path, 'w', newline='') as f:
+        writer = csv.writer(f)
+        for row in get_data():
+            writer.writerow(row)
+
+
+if __name__ == '__main__':
+    write_to_csv('result_report.csv')
