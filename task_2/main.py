@@ -39,4 +39,4 @@ def write_order_to_json(item, quantity, price, buyer, date):
         json.dump(data, f, indent=4)
 
 
-write_order_to_json("Chocolate", 2, 200, "Ivanov I.I.", "30.03.2019")
+write_order_to_json("Chocolate", "2", "200", "Ivanov I.I.", "30.03.2019")

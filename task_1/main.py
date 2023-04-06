@@ -67,7 +67,7 @@ def get_data():
     return main_data
 
 
-def write_to_csv(file_path):
+def write_csv(file_path):
     with open(file_path, 'w', newline='') as f:
         writer = csv.writer(f)
         for row in get_data():
@@ -75,4 +75,4 @@ def write_to_csv(file_path):
 
 
 if __name__ == '__main__':
-    write_to_csv('result_report.csv')
+    write_csv('result_report.csv')
