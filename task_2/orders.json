@@ -1,7 +1,7 @@
 {
     "orders": [
         {
-            "item": "принтер",
+            "item": "printer*",
             "quantity": "10",
             "price": "6700",
             "buyer": "Ivanov I.I.",
@@ -27,6 +27,13 @@
             "price": "10000",
             "buyer": "Petrov P.P.",
             "date": "11.01.2018"
+        },
+        {
+            "item": "Chocolate",
+            "quantity": "2",
+            "price": "200",
+            "buyer": "Ivanov I.I.",
+            "date": "30.03.2019"
         }
     ]
 }
